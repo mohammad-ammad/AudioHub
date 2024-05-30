@@ -22,9 +22,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.audioService.getAudios().then((data) => {
+      console.log(data);
       this.cards = data.audios.map((item : any) => ({
         ...item,
-        audioUrl: `http://127.0.0.1:8000/audio/${item.audio_file}`
+        audioUrl: `http://127.0.0.1:8000/audio/${item.audio_file}`,
+        image: item.image !== null ? `http://127.0.0.1:8000/images/${item.image}` : '/assets/bili.jpeg',
       }));
     });
   }

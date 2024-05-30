@@ -14,6 +14,16 @@
     aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
+            <li>
+                <a routerLink="/"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 3v10.15A4 4 0 1 0 14 17V8h4V3h-6Zm0-3h8a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5v5.16a6 6 0 1 1-8 0V4h-3a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1Z"/>
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Home</span>
+                </a>
+            </li>
             <li *ngIf="authService.isAdmin()">
                 <a routerLink="/dashboard/users"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

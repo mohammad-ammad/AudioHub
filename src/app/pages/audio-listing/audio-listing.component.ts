@@ -23,6 +23,7 @@ export class AudioListingComponent {
     this.audioService.getAudios().then((data) => {
       this.cards = data.audios.map((item : any) => ({
         ...item,
+        image: item.image !== null ? `http://127.0.0.1:8000/images/${item.image}` : '/assets/bili.jpeg',
         audioUrl: `http://127.0.0.1:8000/audio/${item.audio_file}`
       }));
     });
