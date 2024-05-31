@@ -5,8 +5,35 @@
 <section class="mx-5 py-3">
     <h1 class="text-3xl text-center font-bold py-5">Music Library</h1>
 
+    <form class="my-3 flex justify-center items-center gap-2">
+
+        <div>
+            <label for="genre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">fliter by Genre</label>
+            <input type="text" id="genre"  [(ngModel)]="genreFilter" name="genreFilter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+        </div>
+
+        <div>
+            <label for="album" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">fliter by Album</label>
+            <input type="text" id="album" [(ngModel)]="albumFilter" name="albumFilter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+        </div>
+
+        <div>
+            <label for="duration" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">fliter by Duration</label>
+            <input type="text" id="duration" [(ngModel)]="durationFilter" name="durationFilter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+        </div>
+
+        <div>
+            <button type="button" (click)="applyFilters()" class="text-white mt-6 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">filter</button>
+        </div>
+
+        <div>
+            <button type="button" (click)="resetFilters()" class="text-white mt-6 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Reset</button>
+        </div>
+
+    </form>
+
     <div class="grid grid-cols-4 gap-2">
-        <div *ngFor="let card of cards"
+        <div *ngFor="let card of filteredCards"
             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img class="rounded-t-lg" src={{card.image}} alt="" />
@@ -17,6 +44,17 @@
                     </h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ card.description }}</p>
+                <div class="my-3">
+                    <span
+                        class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{{
+                        card.genre }}</span>
+                    <span
+                        class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">{{
+                        card.album }}</span>
+                    <span
+                        class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{
+                        card.duration }}</span>
+                </div>
                 <button (click)="toggleAudio(card.audioUrl)"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     {{ currentAudioUrl === card.audioUrl ? 'Stop Audio' : 'Play Audio' }}

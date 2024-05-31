@@ -22,6 +22,9 @@ export class AudioComponent {
     this.audioForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
+      genre: ['', Validators.required],
+      album: ['', Validators.required],
+      duration: ['', Validators.required],
       audioFile: [null, Validators.required],
       imageFile: [null, Validators.required]
     });
@@ -40,6 +43,9 @@ export class AudioComponent {
       formData.append('name', this.audioForm.get('title')?.value);
       formData.append('description', this.audioForm.get('description')?.value);
       formData.append('audio_file', this.audioForm.get('audioFile')?.value);
+      formData.append('genre', this.audioForm.get('genre')?.value);
+      formData.append('album', this.audioForm.get('album')?.value);
+      formData.append('duration', this.audioForm.get('duration')?.value);
       formData.append('image', this.audioForm.get('imageFile')?.value);
       formData.append('user_id', '1');
 

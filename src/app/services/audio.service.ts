@@ -8,6 +8,7 @@ export class AudioService {
 
   private baseUrl = 'http://127.0.0.1:8000/api';
   
+  
   async getAudios(): Promise<any> {
     const response = await fetch(`${this.baseUrl}/all/audios`);
     return response.json();
